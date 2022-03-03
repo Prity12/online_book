@@ -49,11 +49,13 @@ class FavouritesController < ApplicationController
 
   # DELETE /favourites/1 or /favourites/1.json
   def destroy
+    book_id = @favourite.book_id
+    user_id = @favourite.user_id
     @favourite.destroy
 
     respond_to do |format|
+      format.json { render json: {user_id: user_id, book_id: book_id} }
       format.html {}
-      format.json { head :no_content }
     end
   end
 
