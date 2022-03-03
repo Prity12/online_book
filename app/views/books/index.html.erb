@@ -1,0 +1,15 @@
+<%= javascript_include_tag 'book' %>
+<p style="color: green"><%= notice %></p>
+<h1>Books</h1>
+<input type="text" placeholder="Search by book" id="book_key" class="form-control" onkeyup="filterFunction()" autocomplete="off"style="display: inline;">
+<div id="books_list">
+  <%if @books.present? %>
+    <%=render 'books/book_detail', remote: true %>
+  <%else%>
+    <p>book not available</p>
+  <%end%>
+</div>
+<% if current_user.admin?%>
+  <%= link_to "New book", new_book_path %>
+<%end%>
+

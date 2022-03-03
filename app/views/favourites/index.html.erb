@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Favourites</h1>
+
+<div id="favourites">
+  <%if @favourites.present? %>
+    <% @favourites.each do |favourite| %>
+      <%= render favourite %>
+      <p>
+        <%= link_to "Show this favourite", favourite %>
+      </p>
+    <% end %>
+  <%else%>
+    <p>No Favourtie Book</p>
+  <%end%>
+</div>
+<%if current_user.admin? %>
+  <%= link_to "New favourite", new_favourite_path %>
+<%end%>

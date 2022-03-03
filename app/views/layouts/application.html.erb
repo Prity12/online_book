@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OnlineBook</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  </head>
+
+  <body>
+    <%= link_to ("<i class='fa fa-arrow-left' style='color:green'></i>" + "Back").html_safe, :back %>
+    <%= link_to ("<i class='fa fa-home' style='color:green'></i>" + "Home").html_safe, :root %>
+    <div style="margin-left: 200px;">
+      <%= yield %>
+    </div>
+  </body>
+</html>

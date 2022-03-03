@@ -1,0 +1,19 @@
+<% @books.each do |book| %>
+  <%= render book %>
+  <p>
+    <%= link_to "Show this book", book %>
+    <% if current_user.user?%>
+      <% if current_user.is_favourties?(book.id)%>
+        <%= link_to ("<i class='fa fa-star' style='color:green'></i>").html_safe, "#","data-container": "body", class: "favourite-destroy", "data-id": current_user.favourtie_book_id(book.id)%>
+      <%else%>
+
+        <%= link_to ("<i class='fa fa-star-o' style='color:green'></i>").html_safe, "#","data-container": "body", class: "favourite-request", "data-user_id": current_user.id, "data-book_id": book.id, "data-toggle": "tooltip"%>
+      <%end%>
+    <%elsif current_user.admin? %>
+      <%= link_to 'Destroy', book_path(book), class: "fa fa-trash",
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+
+    <%end%>
+  </p>
+<% end %>

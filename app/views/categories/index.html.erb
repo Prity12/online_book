@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Categories</h1>
+
+<div id="categories">
+  <% @categories.each do |category| %>
+    <%= render category %>
+    <p>
+      <%= link_to "Show this category", category %>
+    </p>
+      <%if current_user.admin? %>
+        <%= link_to 'Destroy', category_path(category), class: "fa fa-trash",
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+
+      <%end%>
+    <p>
+  <% end %>
+</div>
+
+<%= link_to "New category", new_category_path %>

@@ -1,0 +1,27 @@
+<h1>Online Book Store</h1>
+<% if current_user%>
+  <p>Welcome <%= current_user.full_name&.capitalize%></p>
+  <p> You are successfully login as <%=current_user.role%></p>
+
+  <%if current_user.user?%>
+    <h4> User DashBoard</h4>
+    <li><%=link_to ("<i class='fa fa-book' style='color:green'></i>" + "Book").html_safe,  books_path %> </li>
+    <li><%=link_to ("<i class='fa fa-star' style='color:green'></i>" + "Favourites Book").html_safe,  favourites_path %> </li>
+  <%else%>
+    <h4> Admin DashBoard</h4>
+    <p> There are <%= User.count %> users in the system </p>
+    <ul>
+      <li><%=link_to ("<i class='fa fa-book' style='color:green'></i>" + "Book").html_safe,  books_path %> </li>
+      <li><%=link_to ("<i class='fa fa-list-alt' style='color:green'></i>" + "Category").html_safe, categories_path %></li>
+      <li><%=link_to ("<i class='fa fa-user' style='color:green'></i>" + "User").html_safe, users_path%></li>
+      <li><%=link_to ("<i class='fa fa-edit' style='color:green'></i>" + "Author").html_safe, authors_path%></li>
+      <li><%=link_to ("<i class='fa fa-star' style='color:green'></i>" + "Favourite").html_safe, favourties_path%></li>
+    </ul>
+  <%end%>
+  <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+<%else%>
+  <p>You are not signed in</p>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <br>
+  <%= link_to "Login", new_user_session_path %>
+<%end%>

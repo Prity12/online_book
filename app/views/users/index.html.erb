@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+<%= link_to ("<i class='fa fa-arrow-left' style='color:green'></i>" + "Back").html_safe, :back %>
+<%= link_to ("<i class='fa fa-home' style='color:green'></i>" + "Home").html_safe, :root %>
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "View user", user %>
+    </p>
+    <p>
+      <%if current_user.admin? %>
+        <%= link_to 'Destroy', user_path(author), class: "fa fa-trash",
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+
+      <%end%>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_user_path %>
