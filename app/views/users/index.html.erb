@@ -11,7 +11,7 @@
     </p>
     <p>
       <%if current_user.admin? %>
-        <%= link_to 'Destroy', user_path(author), class: "fa fa-trash",
+        <%= link_to 'Destroy', users_destroy_path(user), class: "fa fa-trash",
                         method: :delete,
                         data: { confirm: 'Are you sure?' } %>
 

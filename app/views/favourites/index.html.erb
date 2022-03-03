@@ -9,6 +9,14 @@
       <p>
         <%= link_to "Show this favourite", favourite %>
       </p>
+      <p>
+        <%if current_user.admin? %>
+          <%= link_to 'Destroy', favourites_path(favourite), class: "fa fa-trash",
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+        <%end%>
+        </p>
+      </p>
     <% end %>
   <%else%>
     <p>No Favourtie Book</p>

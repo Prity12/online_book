@@ -1,4 +1,11 @@
-<%= link_to ("<i class='fa fa-arrow-left' style='color:green'></i>" + "Back").html_safe, :back %>
-<%= link_to ("<i class='fa fa-home' style='color:green'></i>" + "Home").html_safe, :root %>
 <h1>Users Detail</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<p style="color: green"><%= notice %></p>
+
+<%= render @user %>
+
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %>
+
+  <%= button_to "Destroy this user", @user, method: :delete %>
+</div>

@@ -15,7 +15,7 @@
       <li><%=link_to ("<i class='fa fa-list-alt' style='color:green'></i>" + "Category").html_safe, categories_path %></li>
       <li><%=link_to ("<i class='fa fa-user' style='color:green'></i>" + "User").html_safe, users_path%></li>
       <li><%=link_to ("<i class='fa fa-edit' style='color:green'></i>" + "Author").html_safe, authors_path%></li>
-      <li><%=link_to ("<i class='fa fa-star' style='color:green'></i>" + "Favourite").html_safe, favourties_path%></li>
+      <li><%=link_to ("<i class='fa fa-star' style='color:green'></i>" + "Favourite").html_safe, favourites_path%></li>
     </ul>
   <%end%>
   <%= button_to "logout", destroy_user_session_path, method: :delete  %>

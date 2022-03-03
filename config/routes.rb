@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :favourites
   get 'users/index', to: 'users#index', as: :users
-  get 'users/show', to: 'users#show', as: :user
+  get 'users/show/:id', to: 'users#show', as: :user
+  post 'users/user_create', to: 'users#user_create', as: :user_create
   get 'users/new', to: 'users#new', as: :new_user
-  get 'users/edit', to: 'users#edit', as: :edit_user
-  delete 'users/:id' => 'users#destroy'
+  get 'users/edit/:id', to: 'users#edit', as: :edit_user
+  patch 'users/update_user', to: 'user#update_user', as: :update_user
+  delete 'users_destroy/:id' => 'users#destroy', as: :users_destroy
   root 'welcome_pages#home'
   resources :books
   resources :authors
